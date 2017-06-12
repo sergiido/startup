@@ -6,6 +6,10 @@
   "scripts": {
     "start": "node server.js"
   },
+  "engine": {
+  "node": "*",
+  "npm": "*"
+},
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.16.0",
