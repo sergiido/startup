@@ -4,8 +4,9 @@
   "description": "myApp descr",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "start": "node server.js"
   },
+  "main": "server.js",
   "dependencies": {
     "body-parser": "^1.16.0",
     "cookie-parser": "*",
@@ -15,8 +16,5 @@
     "method-override": "^2.3.7",
     "mongoose": "^4.8.2",
     "serve-favicon": "^2.3.2"
-  },
-  "devDependencies": {
-    "nodemon": "^1.11.0"
   }
 }
