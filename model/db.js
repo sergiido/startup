@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/Mydb2');
+const mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
+mongoURLLabel = "";
+
+mongoose.connect(mongoURL);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
