@@ -6,8 +6,8 @@ const favicon = require('serve-favicon');
 
 const app = express();
 
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
+const ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.set('views', __dirname + '/views');
@@ -16,7 +16,6 @@ app.use(cookieParser('cookiesecret'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use( function( req, res, next ) {
-
     if ( req.query._method == 'DELETE' ) {
         req.method = 'DELETE';
         req.url = req.path;
@@ -27,9 +26,9 @@ app.use( function( req, res, next ) {
 app.use(express.static(__dirname + '/public'));
 
 app.use(session({
-  resave: true, // false=don't save session if unmodified
+  resave: true,
   //path: '/',
-  saveUninitialized: true, // false=don't create session until something stored
+  saveUninitialized: true,
   secret: 'sessionsecret'
   // cookie: { maxAge: 60000 }
 }));
