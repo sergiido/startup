@@ -6,8 +6,8 @@ const favicon = require('serve-favicon');
 
 const app = express();
 
-const port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-const address = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.set('views', __dirname + '/views');
@@ -36,7 +36,6 @@ app.use(session({
 
 require('./router/router')(app);
 
-app.listen(port, address, () => {
-	console.log("runnin on port 80");
-});
+app.listen(port, ip);
+console.log('Server running on http://%s:%s', ip, port);
 
